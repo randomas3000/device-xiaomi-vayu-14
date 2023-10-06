@@ -24,6 +24,15 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_SHIPPING_API_LEVEL := 30
 BOARD_SHIPPING_API_LEVEL := 30
 
+# HALs
+PRODUCT_USES_QCOM_HARDWARE := true
+PRODUCT_BOARD_PLATFORM :=  msmnile
+
+TARGET_KERNEL_DIR ?= device/xiaomi/vayu-kernel
+LOCAL_KERNEL := $(TARGET_KERNEL_DIR)/Image
+
+PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
+
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
 
@@ -453,7 +462,7 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/xiaomi
+    vendor/hardware/xiaomi
 
 # Thermal
 PRODUCT_PACKAGES += \
